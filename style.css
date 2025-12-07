@@ -22,6 +22,7 @@ nav{
 nav .logo_container{
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 nav .logo_container .title{
@@ -108,6 +109,7 @@ section{
     height: 360px; 
     border: 2px solid #2E1401;
     border-radius: 16px;
+    filter:drop-shadow(2px 2px 0 #2E1401);
 }
 
 .card_questions_side, 
@@ -182,6 +184,19 @@ section{
     gap:16px;
 }
 
+.statistics h3{
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 120%;
+    }
+
+.stats_wrapper{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+
 .stat_card{
     display: flex;
     justify-content: space-between;
@@ -236,6 +251,7 @@ section{
 }
 
 
+
 /***Buttons general styling***/
 .btn{
     padding: 10px 12px;
@@ -256,6 +272,10 @@ section{
 .card_actions > button{
     padding: 10px 16px;
     justify-content: center;
+}
+
+.action_btn{
+    filter:drop-shadow(2px 2px 0 #2E1401);
 }
 
 .card_actions .mastered_btn{
@@ -285,20 +305,108 @@ section{
     color:#6D5B4D;
     font-size: 14px;
     line-height: 140%;
-    font-weight: medium;
+    font-weight: 500;
 }
 
 .card_navigation > button{
+    padding:  10px 12px;
     border:1px solid #2E1401;
     border-radius: 99px;
     align-content: center;
     background-color: #FFFFFF;
-    width:40px;
-    height:40px;
     font-weight: medium;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 120%;
+    display: flex;
+    gap: 15px;
+}
+
+.card_navigation > button span{
+    display: none;
 }
 
 
+
+/******Media Queries ******/
+@media screen and (min-width:748px){
+    nav .logo_container .title{
+    display: flex;
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 600;
+}
+  .inputs{
+    flex-direction: row;
+    align-items: center;
+    gap:16px;
+  }
+
+  .card_content h2{
+    font-size: 32px;
+  }
+
+  .card_actions{
+    flex-direction: row;
+    justify-content: center;
+    gap:20px;
+  }
+
+  .card_navigation > button span{
+    display: flex;
+  }
+
+  .stats_wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px
+  }
+}
+
+@media screen and (min-width:991px){
+    body{
+        padding:24px 150px;
+    }
+
+    main{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap:32px;
+    }
+
+
+    .top_card_controls{
+    padding: 20px;
+    }
+
+    .flashcard{
+        padding:50px 20px;
+        min-height: 60%;
+        gap:20px;
+    }
+
+    .card_content h2{
+    font-size: 40px;
+    }
+
+    .card_navigation{
+        padding:25px;
+        align-self: center;
+    }
+
+    .stat_value{
+    font-size:40px;
+    }
+
+    .stats_wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px
+    }
+
+    .stat_icon{
+        padding: 56px 51px;
+    }
+
+}
 
 

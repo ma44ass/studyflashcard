@@ -78,9 +78,11 @@
             <div class="card_navigation">
                     <button id="prev_btn" class="left_arrow">
                         <
+                        <span>Previous</span>
                     </button>
                     <span class="card_counter" id="card_counter">Card 1 of 40</span>
                     <button id="next_btn" class="right_arrow">
+                        <span>Next</span>
                        >
                     </button>
             </div>
@@ -88,44 +90,46 @@
     </section>
 
     <section class="statistics">
-        <h3>Study Statistics</h3>
-        <div class="stat_card total_cards">
-            <div class="stat_value_container">
-                <p class="stat_label">Total Cards</p>
-                <p class="stat_value" id="total_stats">40</p>
-            </div> 
-            <div class="stat_icon total_icon">
-                <img src="/assets/layers.svg" alt="" width="30">
-            </div>
-        </div>
-
-            <div class="stat_card mastered_cards">
+            <h3>Study Statistics</h3>
+        <div class="stats_wrapper">
+            <div class="stat_card total_cards">
                 <div class="stat_value_container">
-                    <p class="stat_label">Mastered</p>
-                    <p class="stat_value" id="mastered_stat">11</p>
+                    <p class="stat_label">Total Cards</p>
+                    <p class="stat_value" id="total_stats">40</p>
                 </div> 
-                <div class="stat_icon mastered_icon" >
-                    <img src="/assets/brain.svg" alt="" width="30">
+                <div class="stat_icon total_icon">
+                    <img src="/assets/layers.svg" alt="" width="30">
                 </div>
             </div>
 
-             <div class="stat_card inprogress_cards">
-                <div class="stat_value_container">
-                    <p class="stat_label">In Progress</p>
-                    <p class="stat_value" id="inprogress_stat">21</p>
-                </div> 
-                <div class="stat_icon inprogress_icon">
-                    <img src="/assets/book.svg" alt="" width="30">
+                <div class="stat_card mastered_cards">
+                    <div class="stat_value_container">
+                        <p class="stat_label">Mastered</p>
+                        <p class="stat_value" id="mastered_stat">11</p>
+                    </div> 
+                    <div class="stat_icon mastered_icon" >
+                        <img src="/assets/brain.svg" alt="" width="30">
+                    </div>
                 </div>
-            </div>
 
-             <div class="stat_card unstarted_cards">
-                <div class="stat_value_container">
-                    <p class="stat_label">Not Started</p>
-                    <p class="stat_value" id="unstarted_stat">8</p>
-                </div> 
-                <div class="stat_icon unstarted_icon">
-                    <img src="/assets/box.svg" alt="" width="30">
+                <div class="stat_card inprogress_cards">
+                    <div class="stat_value_container">
+                        <p class="stat_label">In Progress</p>
+                        <p class="stat_value" id="inprogress_stat">21</p>
+                    </div> 
+                    <div class="stat_icon inprogress_icon">
+                        <img src="/assets/book.svg" alt="" width="30">
+                    </div>
+                </div>
+
+                <div class="stat_card unstarted_cards">
+                    <div class="stat_value_container">
+                        <p class="stat_label">Not Started</p>
+                        <p class="stat_value" id="unstarted_stat">8</p>
+                    </div> 
+                    <div class="stat_icon unstarted_icon">
+                        <img src="/assets/box.svg" alt="" width="30">
+                    </div>
                 </div>
             </div>
         </section>
