@@ -64,6 +64,9 @@ section{
     border-radius: 16px;
     background-color: #FFFFFF;
 }
+
+/************Study Section************/
+
 .top_card_controls{
     padding: 12px 16px;
     display: flex;
@@ -170,6 +173,67 @@ section{
     gap: 10px;
 }
 
+/******** Statistics section ***********/
+
+.statistics{
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+}
+
+.stat_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #2E1401;
+    border-left: 2px solid #2E1401;
+    border-right: 2px solid #2E1401;
+    border-bottom: 1px solid #2E1401;
+    border-radius: 12px;
+}
+
+.stat_value_container{
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:32px;
+    flex: 1;
+}
+
+.stat_label{
+    font-weight: 500;
+    font-size:16px;
+    line-height: 120%;
+}
+
+.stat_value{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+}
+
+.stat_icon{
+    padding: 48px 40px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-left: 1px solid #2E1401;
+}
+
+.total_icon{
+    background-color: #92ADEB;
+}
+
+.mastered_icon{
+    background-color:#47D9C9;
+}
+.inprogress_icon{
+    background-color:#F073A3;
+}
+.unstarted_icon{
+    background-color:#FC8AE5;
+}
 
 
 /***Buttons general styling***/
