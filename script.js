@@ -1,8 +1,4 @@
-const card = document.querySelector('.flipped');
 
-card.addEventListener('click', function (){
-    card.classList.toggle('is_flipped');
-});
 
 const studyCards = [
     { id: '1', question: "What does HTML stand for?", answer: "HyperText Markup Language", category: "Web Development", mastered: false },
@@ -94,6 +90,20 @@ function showCard(){
     }
 }
 
+// categories //
+function setCategories(){
+    const categories = new Set(studyCards.map(card => card.category));
+    showCategories.innerHTML ='<option value ="all">All Categories </option>';
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        showCategories.appendChild(option);
+    });
+
+    showCategories.value = currentCategory;
+}
+
 //-----------------------------------------------------//
 
 //card navigation//
@@ -156,7 +166,9 @@ reset.addEventListener('click', () => {
 
 
 
+
 function startStudyCards(){
+    setCategories();
     filterCards();
     showCard();
 }
