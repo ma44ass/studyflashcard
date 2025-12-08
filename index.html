@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+   
     <title>Flashcard</title>
 </head>
 <body>
@@ -46,23 +47,23 @@
             <div class="flashcard_container">
                 <div class="flashcard">
                     <div class="flipped" id="current_card">
-                        <div class="card_questions_side">
-                            <div class="card_subject">Web Development</div>
+                        <div class="card_face card_questions_side">
+                            <div class="card_subject" id="q_card_subject">Web Development</div>
                             <div class="card_content">
-                                <h2>What does HTML stand for?</h2>
+                                <h2 id="card_question">What does HTML stand for?</h2>
                                 <p class="show_answer">Click to reveal answer</p>
                             </div>
-                            <div class="card_progress">0/0</div>
+                            <div class="card_progress" id="q_progress">0/0</div>
                         </div>
 
-                    <div class="card_answer_side">
-                        <div class="card_subject">Web Development</div>
-                        <div class="card_content">
-                            <h2>HyperText Markup Language</h2>
-                        </div> 
-                        <div class="card_progress">0/0</div> 
-                    </div>
-                </div>
+                        <div class="card_face card_answer_side">
+                            <div class="card_subject" id="a_card_subject">Web Development</div>
+                            <div class="card_content">
+                                <h2 id="card_answer">HyperText Markup Language</h2>
+                            </div> 
+                            <div class="card_progress" id="a_progress">0/0</div> 
+                        </div>
+                 </div>
                     
                 <div class="card_actions">
                     <button id="mark_mastered" class="btn mastered_btn action_btn">
@@ -135,5 +136,7 @@
         </section>
     </main>
     
+
+    <script src="script.js"></script>
 </body>
 </html>

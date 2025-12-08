@@ -101,36 +101,48 @@ section{
     gap: 16px;
     text-align: center;
     border-top: 1px solid gray;
+    
 }
 
 .flipped{
     position: relative;
     width: 100%;
-    height: 360px; 
+    height: 350px; 
     border: 2px solid #2E1401;
     border-radius: 16px;
     filter:drop-shadow(2px 2px 0 #2E1401);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
+    
 }
 
-.card_questions_side, 
-.card_answer_side {
+ .flipped.is_flipped {
+    transform: rotateY(360deg);
+}
+
+.card_face {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+   
 }
 
 .card_questions_side {     
     background-color:#FC8AE5;
     border-radius: 16px;
-    z-index: 2;
+    
 }
 
 .card_answer_side {
     background-color: #92ADEB;
     border-radius: 16px;
-    transform: rotateY(180deg);
+    transform: rotateY(360deg);
 }
 
 .card_subject{
@@ -155,7 +167,6 @@ section{
 
 .card_content h2{
     padding-inline:50px;
-    margin-top: 75px;
     font-weight: 700;
     font-size: 24px;
     line-height: 120%;
