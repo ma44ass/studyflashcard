@@ -1,5 +1,4 @@
 
-
 const studyCards = [
     { id: '1', question: "What does HTML stand for?", answer: "HyperText Markup Language", category: "Web Development", mastered: false },
     { id: '2', question: "What property changes the background color?", answer: "background-color", category: "CSS", mastered: false },
@@ -17,6 +16,7 @@ let currentCategory = "all";
 let hideMastered = false;
 
 //inside studycards//
+const card = document.querySelector('.flipped');
 const cardFlipped = document.getElementById('current_card');
 const cardQuestion = document.getElementById('card_question');
 const cardAnswer = document.getElementById('card_answer');
@@ -27,6 +27,7 @@ const q_progress = document.getElementById('a_progress');
 
 //card Actions//
 const markMastered = document.getElementById('mark_mastered');
+const originalButtonText = markMastered.textContent;
 const reset = document.getElementById('reset_button');
 
 //card controls//
@@ -71,22 +72,23 @@ function filterCards(){
 function showCard(){
     const currentCard = activeCard[currentCardIndex];
     const totalcards = activeCard.length;
-
+    const AllMasteredCards =studyCards.filter(card => card.mastered).length
     //inside card content//
     cardQuestion.textContent = currentCard.question;
     cardAnswer.textContent = currentCard.answer;
     a_cardSubject.textContent= q_cardSubject.textContent = currentCard.category;
-    a_progress.textContent= q_progress.textContent =`${currentCardIndex + 1}/${totalcards}`;
+    a_progress.textContent= q_progress.textContent =`${AllMasteredCards}/${totalcards}`;
 
     //card navigation//
     cardCounter.textContent = `Card ${currentCardIndex + 1} of ${totalcards}`;
 
     //card actions//
     if(currentCard.mastered){
-        console.log("add an active class")
         markMastered.classList.add('active');
+        markMastered.innerHTML ="Already mastered";
     }else{
         markMastered.classList.remove('active');
+        markMastered.innerHTML = originalButtonText;
     }
 }
 
@@ -106,15 +108,21 @@ function setCategories(){
 
 //-----------------------------------------------------//
 
+card.addEventListener('click', function (){
+    card.classList.toggle('is_flipped');
+});
+
 //card navigation//
 nextCard.addEventListener('click', () => {
     if(currentCardIndex < activeCard.length -1){
+        card.classList.remove('is_flipped')
         currentCardIndex++;
         showCard();
     }
 });
 
 previousCard.addEventListener('click', () => {
+    card.classList.remove('is_flipped')
     if(currentCardIndex > 0){
         currentCardIndex--;
         showCard();
@@ -135,6 +143,7 @@ check_hideMastered.addEventListener('change' , (e) =>{
 
 cardShuffle.addEventListener('click', ()=> {
         shuffleCards(activeCard);
+        
         currentCardIndex = 0;
         showCard();
 });
@@ -160,6 +169,7 @@ markMastered.addEventListener('click', () =>{
 
 reset.addEventListener('click', () => {
     studyCards.forEach(card => card.mastered = false);
+    markMastered.textContent = originalButtonText;
     filterCards();
     console.log("studycards has been reseted")
 });

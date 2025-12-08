@@ -111,7 +111,7 @@ section{
     border: 2px solid #2E1401;
     border-radius: 16px;
     filter:drop-shadow(2px 2px 0 #2E1401);
-    transition: transform 1s;
+    transition: transform 0.3s;
     transform-style: preserve-3d;
     transform: rotateY(180deg);
     
@@ -185,6 +185,8 @@ section{
     justify-content: space-between;
     gap: 10px;
 }
+
+
 
 /******** Statistics section ***********/
 
@@ -294,6 +296,12 @@ section{
 }
 
 .active{
+    background-color: #F8CB46;
+    font-weight: 600;
+    opacity:50%;
+}
+
+.active_mode{
     background-color: #F8CB46;
     font-weight: 600;
 }
