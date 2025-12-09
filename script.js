@@ -16,14 +16,14 @@ let currentCategory = "all";
 let hideMastered = false;
 
 //inside studycards//
-const card = document.querySelector('.flipped');
+const card = document.querySelector('.flashcard_inner');
 const cardFlipped = document.getElementById('current_card');
 const cardQuestion = document.getElementById('card_question');
 const cardAnswer = document.getElementById('card_answer');
 const q_cardSubject = document.getElementById('q_card_subject');
 const a_cardSubject = document.getElementById('a_card_subject');
-const a_progress = document.getElementById('q_progress');
-const q_progress = document.getElementById('a_progress');
+const a_progress = document.getElementById('a_progress');
+const q_progress = document.getElementById('q_progress');
 
 //card Actions//
 const markMastered = document.getElementById('mark_mastered');
@@ -65,23 +65,26 @@ function filterCards(){
     }
 
     activeCard = filtered;
+    currentCardIndex = 0;
     showCard();
+    updateStats();
+    
 }
 
 //show current card content//
 function showCard(){
+
     const currentCard = activeCard[currentCardIndex];
     const totalcards = activeCard.length;
     const AllMasteredCards =studyCards.filter(card => card.mastered).length
+
     //inside card content//
+    card.classList.remove('is_flipped');
     cardQuestion.textContent = currentCard.question;
     cardAnswer.textContent = currentCard.answer;
     a_cardSubject.textContent= q_cardSubject.textContent = currentCard.category;
     a_progress.textContent= q_progress.textContent =`${AllMasteredCards}/${totalcards}`;
-
-    //card navigation//
     cardCounter.textContent = `Card ${currentCardIndex + 1} of ${totalcards}`;
-
     //card actions//
     if(currentCard.mastered){
         markMastered.classList.add('active');
@@ -90,6 +93,7 @@ function showCard(){
         markMastered.classList.remove('active');
         markMastered.innerHTML = originalButtonText;
     }
+
 }
 
 // categories //
@@ -106,16 +110,28 @@ function setCategories(){
     showCategories.value = currentCategory;
 }
 
-//-----------------------------------------------------//
+//statistics section //
+function updateStats(){
+    const total = studyCards.length;
+    const mastered = studyCards.filter(card => card.mastered).length;
+    const unmastered = studyCards.filter(card => !card.mastered).length;
 
-card.addEventListener('click', function (){
-    card.classList.toggle('is_flipped');
-});
+    document.getElementById('total_stat').textContent = total;
+    document.getElementById('mastered_stat').textContent = mastered;
+    document.getElementById('inprogress_stat').textContent = unmastered;
+    document.getElementById('unstarted_stat').textContent = unmastered;
+
+    if (activeCard.length > 0){ 
+        showCard();
+    }
+    
+}
+
+//-----------------------------------------------------//
 
 //card navigation//
 nextCard.addEventListener('click', () => {
     if(currentCardIndex < activeCard.length -1){
-        card.classList.remove('is_flipped')
         currentCardIndex++;
         showCard();
     }
@@ -129,60 +145,64 @@ previousCard.addEventListener('click', () => {
     }
 });
 
-
 //card controls//
 showCategories.addEventListener('change', (e) => {
     currentCategory = e.target.value;
     filterCards()
 });
 
-check_hideMastered.addEventListener('change' , (e) =>{
+check_hideMastered.addEventListener('change' , (e) => {
     hideMastered = e.target.checked;
     filterCards()
 });
 
-cardShuffle.addEventListener('click', ()=> {
-        shuffleCards(activeCard);
-        
-        currentCardIndex = 0;
-        showCard();
+cardShuffle.addEventListener('click', () => {
+    shuffleCards(activeCard);
+    currentCardIndex = 0;
+    showCard();
+});
+
+card.addEventListener('click', () => {
+    card.classList.toggle('is_flipped');
 });
 
 
+
 //card actions//
-markMastered.addEventListener('click', () =>{
+markMastered.addEventListener('click', () => {
     const currenCardId = activeCard[currentCardIndex].id;
     const updateCardStatus =studyCards.find(card => card.id === currenCardId);
 
     if(updateCardStatus){
         //update the status in the original study cards array//
         updateCardStatus.mastered = true;
-    }
 
-    if(hideMastered){
-        // adds the mastered card to the hide mastered
-        filterCards();
-    } else showCard();
+        if(hideMastered){
+            filterCards();
+        } else {
+            showCard()
+        }
 
-    console.log("marked mastered")
-})
+    updateStats();
+    }   
+});
 
 reset.addEventListener('click', () => {
     studyCards.forEach(card => card.mastered = false);
     markMastered.textContent = originalButtonText;
     filterCards();
     console.log("studycards has been reseted")
+    updateStats();
 });
-
-
-
 
 function startStudyCards(){
     setCategories();
+    updateStats();
     filterCards();
     showCard();
 }
 
-document.addEventListener('DOMContentLoaded' , startStudyCards);
+
+document.addEventListener('DOMContentLoaded', startStudyCards);
 
 
