@@ -41,6 +41,10 @@ const nextCard = document.getElementById('next_btn');
 const previousCard = document.getElementById('prev_btn');
 const cardCounter = document.getElementById('card_counter');
 
+// Navbar buttons
+const studyModeBtn = document.getElementById('study_mode_btn');
+const allCardsBtn = document.getElementById('all_cards_btn');
+
 
 //------------------functions----------------------//
 //Cards Shuffle//
@@ -128,6 +132,24 @@ function updateStats(){
     
 }
 
+// Function to handle tab switching
+function switchTab(selectedButton) {
+    if (selectedButton.id === 'study_mode_btn') {
+        studyModeBtn.classList.add('active_mode');
+        studyModeBtn.classList.remove('inactive_mode');
+        allCardsBtn.classList.add('inactive_mode');
+        allCardsBtn.classList.remove('active_mode');
+        console.log('Switched to Study Mode');
+    } else if (selectedButton.id === 'all_cards_btn') {
+        allCardsBtn.classList.add('active_mode');
+        allCardsBtn.classList.remove('inactive_mode');
+        studyModeBtn.classList.add('inactive_mode');
+        studyModeBtn.classList.remove('active_mode');
+        console.log('Switched to All Cards');
+    }
+}
+
+
 //-----------------------------------------------------//
 
 //card navigation//
@@ -201,6 +223,11 @@ function startStudyCards(){
     filterCards();
     showCard();
 }
+
+
+// Event listeners for navbar buttons
+studyModeBtn.addEventListener('click', () => switchTab(studyModeBtn));
+allCardsBtn.addEventListener('click', () => switchTab(allCardsBtn));
 
 
 document.addEventListener('DOMContentLoaded', startStudyCards);
