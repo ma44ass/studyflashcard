@@ -19,8 +19,8 @@
             </div>
             
             <div class="btn_wrapper">
-                <button class="btn mode_tab active_mode">Study Mode</button>
-                <button class="btn mode_tab disabled">All Cards</button>
+                <button class="btn tab active_mode">Study Mode</button>
+                <button class="btn tab disabled">All Cards</button>
             </div>
         </nav>
     </header>
@@ -48,12 +48,14 @@
                 <div class="flashcard">
                     <div class="flashcard_inner" id="current_card">
                         <div class="flashcard_front">
-                            <div class="card_subject" id="q_card_subject">Web Development</div>
+                            <div class="frontcontent">
+                            <p class="card_subject" id="q_card_subject">Web Development</p>
                             <div class="card_content">
                                 <h2 id="card_question">What does HTML stand for?</h2>
                                 <p class="show_answer">Click to reveal answer</p>
                             </div>
                             <span class="card_progress" id="q_progress">0/0</span>
+                            </div>
                         </div>
 
                         <div class="flashcard_back">

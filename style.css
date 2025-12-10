@@ -137,6 +137,14 @@ section{
 .flashcard_front{     
     background-color:#FC8AE5;
     border-radius: 16px;
+    
+}
+.frontcontent{
+    transform:rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 25px;
 }
 
 .flashcard_back{

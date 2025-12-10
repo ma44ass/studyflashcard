@@ -2,7 +2,7 @@
 const studyCards = [
     { id: '1', question: "What does HTML stand for?", answer: "HyperText Markup Language", category: "Web Development", mastered: false },
     { id: '2', question: "What property changes the background color?", answer: "background-color", category: "CSS", mastered: false },
-    { id: '3', question: "How do you declare a variable in ES6?", answer: "Using `let` or `const`", category: "JavaScript", mastered: false },
+    { id: '3', question: "How do you declare a variable in ES6?", answer: "Using 'let' or 'const'", category: "JavaScript", mastered: false },
     { id: '4', question: "What is the capital of France?", answer: "Paris", category: "General Knowledge", mastered: false },
     { id: '5', question: "What is the primary function of CSS?", answer: "To style and lay out web pages.", category: "Web Development", mastered: false },
     { id: '6', question: "Which loop runs at least once?", answer: "do...while loop", category: "JavaScript", mastered: false },
@@ -16,6 +16,7 @@ let currentCategory = "all";
 let hideMastered = false;
 
 //inside studycards//
+const studyBtn = document.querySelector('.tab')
 const card = document.querySelector('.flashcard_inner');
 const cardFlipped = document.getElementById('current_card');
 const cardQuestion = document.getElementById('card_question');
@@ -165,7 +166,6 @@ cardShuffle.addEventListener('click', () => {
 card.addEventListener('click', () => {
     card.classList.toggle('is_flipped');
 });
-
 
 
 //card actions//
